@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="proses.php" enctype="multipart/form-data"></form>
+  <input type="hidden" name="halaman" value="2">
+  <table border="1">
+    <tr>
+<td><label for="kota">Kota:</label></td> <td><select name="kota" id="kota">
+            <option value="">pilih kota...</option><option value="bdg">Bandung</option>
+<option value="jkt">Jakarta</option><option value="sby">Surabaya</option> </select></td></tr>
+<tr>
+<td><label for="kerja">Pekerjaan:</label></td> <td><select name="kerja" id="kerja" size="4">
+            <option value="a">Mahasiswa</option><option value="b">Pegawai swasta</option>
+<option value="c">Pegawai negeri</option><option value="d">Wiraswasta</option> </select></td></tr>
+<tr>
+<td><label for="bahasa">Bahasa:</label><br>(bisa lebih dari satu)</td> <td><select name="bahasa" id="bahasa" size="4" multiple>
+            <option value="id">Indonesia</option>
+            <option value="en">Inggris</option>
+            <option value="ch">Cina</option>
+            <option value="fr">Prancis</option>
+</select></td></tr>
+<tr>
+<td>Hobi:<br>(bisa lebih dari satu)</td>
+<td><input type="checkbox" name="hobi" value="1"B>erenang<br>
+<input type="checkbox" name="hobi" value="2"N>onton film<br>
+<input type="checkbox" name="hobi" value="3"M>usik</td> </tr><tr>
+      <td><label for="foto">Foto:</label></td>
+<td><input type="file" name="foto" id="foto" size="10"<>/td></tr> </table>
+  <button type="submit">Kirim <img src="smiley.gif"></button>
+  <button type="reset">Reset <img src="tanya.gif"></button>
+</form>
+</body>
+</html>

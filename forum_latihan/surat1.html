@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to right bottom, #ff9a9e, #fad0c4);
+        font-family: "Arial", sans-serif;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        max-width: 500px;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      h1 {
+        color: #ff4b6e;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+      }
+
+      p {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .love-button {
+        background: #ff4b6e;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 20px;
+      }
+
+      .love-button:hover {
+        transform: scale(1.1);
+        background: #ff3358;
+      }
+
+      .heart {
+        position: absolute;
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
+
+      .special-message {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4rem;
+        color: #ff4b6e;
+        z-index: 1000;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+      .flower-rain {
+        position: fixed;
+        top: -50px;
+        animation: fall linear infinite;
+        z-index: 999;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+        }
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .visible {
+        display: block;
+      }
+
+      .heart-burst {
+        position: fixed;
+        pointer-events: none;
+        animation: burst 1s forwards;
+      }
+
+      @keyframes burst {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Untuk April ❤️</h1>
+      <p>
+        Setiap pagi ketika aku membuka mata, hal pertama yang kupikirkan adalah
+        senyumanmu. Seperti bunga di musim semi yang mekar dengan indahnya,
+        begitu juga cintaku padamu yang terus bertumbuh setiap harinya.
+      </p>
+      <p>
+        April, kamu adalah inspirasi dalam setiap langkahku. Kehadiranmu membuat
+        duniaku lebih berwarna dan penuh makna.
+      </p>
+      <button class="love-button" onclick="showLove()">
+        ♥ Klik Untuk Melihat Perasaanku ♥
+      </button>
+      <div class="signature">
+        Dengan segenap cinta,<br />
+        [APRIL SAYANG]
+      </div>
+    </div>
+
+    <div id="specialMessage" class="special-message hidden">
+      April, I Love You! ❤️
+    </div>
+
+    <script>
+      function createFlower() {
+        const flowers = ["🌸", "🌺", "🌹", "🌷", "💐"];
+        const flower = document.createElement("div");
+        flower.className = "flower-rain";
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.style.animationDuration = Math.random() * 3 + 2 + "s";
+        flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+        flower.style.fontSize = Math.random() * 20 + 10 + "px";
+        document.body.appendChild(flower);
+
+        flower.addEventListener("animationend", () => {
+          flower.remove();
+        });
+      }
+
+      function createHeart(x, y) {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.className = "heart-burst";
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+        heart.style.fontSize = "30px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+      }
+
+      function showLove() {
+        const specialMessage = document.getElementById("specialMessage");
+        specialMessage.classList.remove("hidden");
+        specialMessage.classList.add("visible");
+
+        // Membuat hujan bunga lebih intens
+        for (let i = 0; i < 50; i++) {
+          setTimeout(createFlower, i * 100);
+        }
+
+        // Membuat efek ledakan hati
+        for (let i = 0; i < 20; i++) {
+          setTimeout(() => {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createHeart(x, y);
+          }, i * 100);
+        }
+
+        // Sembunyikan pesan setelah beberapa detik
+        setTimeout(() => {
+          specialMessage.classList.remove("visible");
+          specialMessage.classList.add("hidden");
+        }, 3000);
+      }
+
+      // Hujan bunga basic
+      setInterval(createFlower, 300);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Welcome to student canteen </h1>
+    <form method="post" action="proses.php">
+        <table border="1">
+            <tr>
+                <td><label for="name"> nama lengkap</label></td>
+                <td><label type="text" name="nama" id="nama" maxlenght="50"></label></td>
+            </tr>
+            <tr>
+                <td><label for="prodi">prodi</label></td>
+                <td>
+                    <select name="prodi" id="prodi">
+                    <option value="p1" selected> informatika</option>
+                    <option value="p2">sistem informasi</option>
+                    <option value="p3">teknologi informasi</option>
+
+                    </select>
+                </td>   
+            </tr>
+            <tr>
+                <td><label for="gender">gender</label></td>
+                <td>
+                    <input type="radio" name="gender" id="gender" value="L">male</input>
+                    <input type="radio" name="gender" id="gender" value="P">female</input>
+                </td>
+            </tr>
+            <tr>
+                <td><label></label></td>
+                <td><textarea rows="3" cols="30" name="pesan makanan"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="send">pesan</input></td>
+                <td><input type="reset" value="reset">pesan</input></td>
+            </tr>
+        </table>
+     </form>
+</body>
+</html>
